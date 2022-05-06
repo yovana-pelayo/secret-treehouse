@@ -25,7 +25,7 @@ export default function Login() {
       if (loginWasSuccessful) {
         history.replace(from);
       } else {
-        setError('unable to login');
+        setError('unable to login try again ');
       }
     } catch (error) {
       setError(error.message);
@@ -44,7 +44,7 @@ export default function Login() {
     <>
       <h3>You must log in to view the page at {from.pathname}</h3>
       <form onSubmit={handleLogin} className={styles.loginForm}>
-        <label>Email</label>
+        <label htmlFor="email">Email</label>
         <input
           id="email"
           name="email"
@@ -53,7 +53,7 @@ export default function Login() {
           onChange={(event) => handleFormChange(event)}
         />
         {''}
-        <label>Password</label>
+        <label htmlFor="password">Password</label>
         <input
           id="password"
           name="password"
