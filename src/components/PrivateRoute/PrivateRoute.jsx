@@ -23,3 +23,5 @@ export function PrivateRoute({ children, ...rest }) {
     />
   );
 }
+//children would be the treehouse component
+//defining state to send back to redirect

@@ -10,6 +10,8 @@ export function ProvideAuth({ children }) {
       email === process.env.AUTH_EMAIL &&
       password === process.env.AUTH_PASSWORD;
     if (loginSuccessful) setUser({ email });
+    else throw new Error('Invalid Login Credentials');
+
     return loginSuccessful;
   };
 

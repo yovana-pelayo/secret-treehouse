@@ -16,8 +16,20 @@ export default function Login() {
   const { from } = location.state || { from: { pathname: '/' } };
 
   const handleLogin = (event) => {
-    event.preventDefault();
-    const loginWasSuccessful = auth.login(formState.email, formState.password);
+    try {
+      event.preventDefault();
+      const loginWasSuccessful = auth.login(
+        formState.email,
+        formState.password
+      );
+      if (loginWasSuccessful) {
+        history.replace(from);
+      } else {
+        setError('unable to login');
+      }
+    } catch (error) {
+      setError(error.message);
+    }
 
     // TODO: If login was unsuccessful, set an error with a message
     // to display to the user that their login failed.
@@ -37,12 +49,17 @@ export default function Login() {
           id="email"
           name="email"
           type="email"
-        />{' '}
+          value={formState.email}
+          onChange={(event) => handleFormChange(event)}
+        />
+        {''}
         <label>Password</label>
         <input
           id="password"
           name="password"
           type="password"
+          value={formState.password}
+          onChange={(event) => handleFormChange(event)}
         />
         <button type="submit" aria-label="Sign In">
           Sign in
@@ -52,3 +69,5 @@ export default function Login() {
     </>
   );
 }
+
+//where is the email and passsword state coming from?? I see that formState is set equal to inputs. Does that mean that the inputs are state?
