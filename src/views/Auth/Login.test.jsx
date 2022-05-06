@@ -51,6 +51,6 @@ it('should allow the user to log in', async () => {
   fireEvent.click(submitBtn);
 
   return waitFor(() => {
-    screen.getByText('Welcome to the Secret Treehouse!');
+    screen.getByText('Welcome to the Secret Treehouse!!');
   });
 });
